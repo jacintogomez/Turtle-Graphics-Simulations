@@ -1,77 +1,45 @@
-import turtle           # Imports library that allows user to alter a turtle. A turtle is something that has a position and a direction, and can draw lines
-from turtle import *    # Imports functions from the turtle library that allow user to alter the turtle
+import turtle
+from turtle import *
 from tkinter import *
 from math import *
 
-# The gravitational constant G
 G = 6.6741e-11
-
-# The Astronomical Unit = distance from earth to the sun [meters]
 AU = 149600000000
-SCALE = 75.0 / AU       # Scale 1 AU to 30 pixels
+SCALE = 75.0 / AU
 
-# Class definitions: planet
-class planet(Turtle):   # This function defines the parameters for each planets
-
-    # Initialize planet name, location, velocity
+class planet(Turtle):
     vx = vy = 0.0
     xloc = yloc = 0.0
-
-    # Compute the attraction between planet and other body
     def attraction(self, other, date):
-
-        # Compute x, y, and total distances between planet and other body
+        # x, y and total distance
         rx = other.xloc - self.xloc
         ry = other.yloc - self.yloc
-        r =  sqrt(rx**2 + ry**2)
-
+        r = sqrt(rx**2 + ry**2)
         if r != 0:
-
-        # Compute the overall force
             f = (G*(self.mass * other.mass))/(r**2)
-
-
-            # Compute the angle between the hypotenuse and the adjacent side
             theta = atan2(ry,rx)
-            # Compute the x component of the force
-            fx = f * cos(theta)
-            # Compute the y component of the force
-            fy = f * sin(theta)
-            # Return the x and y components of the force to the main loop
+            fx = f * cos(theta) # x force component
+            fy = f * sin(theta) # y force component
             return fx, fy
-
         else:
             return 0,0
 
 class rocket(Turtle):
-    # Initialize planet name, location, velocity
     yloc = (1 * AU) *   0.96756
     xloc = (1 * AU) *  -0.17522
     vy = AU * -0.0031302  / 86400
     vx = AU * -0.017201 / 86400
 
-    # Compute the attraction between planet and other body
     def attraction(self, other, date):
-
-        # Compute x, y, and total distances between planet and other body
         rx = other.xloc - self.xloc
         ry = other.yloc - self.yloc
-        r =  sqrt(rx**2 + ry**2)
+        r = sqrt(rx**2 + ry**2)
         if r != 0:
-
-        # Compute the overall force
             f = (G*(self.mass * other.mass))/(r**2)
-
-
-            # Compute the angle between the hypotenuse and the adjacent side
             theta = atan2(ry,rx)
-            # Compute the x component of the force
             fx = f * cos(theta)
-            # Compute the y component of the force
             fy = f * sin(theta)
-            # Return the x and y components of the force to the main loop
             return fx, fy
-
         else:
             return 0,0
 
@@ -90,21 +58,17 @@ class rocket(Turtle):
 #     if rocket.xloc==mars.xloc and rocket.yloc==mars.yloc:
 #         delete rocket
 
-def loop(system):                       # This function calculates the orbit of each planet and displays it in a window
-    timestep = 1*24*3600                # One earth day
-    date = 0                            # Starting date for the simulation - date increases for every iteration of the loop
-
+def loop(system):
+    timestep = 1*24*3600 # One day
+    date = 0
     earthrocket=system[5]
     marsrocket=system[6]
     earth=system[5]
-
-    for body in system:                                 # Runs a loop for each planet
-        body.goto(body.xloc*SCALE, body.yloc*SCALE)     # Puts the planet in its proper location on the display
-        body.pendown()                                  # Puts down the pen - this means that a line will be draw to show the path of the orbit
-
-    while True:                         # Loop will run until user interrupts program (ctrl+c)
-        force = {}                      # Create a dictionary that holds the total forces on each planet
-
+    for body in system:
+        body.goto(body.xloc*SCALE, body.yloc*SCALE)
+        body.pendown() # start drawing
+    while True:
+        force = {}
         if date==0:
             marsrocket.hideturtle()
             marsrocket.penup()
@@ -114,7 +78,6 @@ def loop(system):                       # This function calculates the orbit of 
         if date==40:
             marsrocket.showturtle()
             marsrocket.pendown()
-
         if date==40:
             rocket = planet()
             rocket.name = 'Intermediate Rocket'
@@ -131,9 +94,7 @@ def loop(system):                       # This function calculates the orbit of 
             rocket.showturtle()
             rocket.pendown()
             rocket.forward(20)
-
         for body in system:
-
             total_fx = total_fy = 0.0   # Initialize the x and y components on the planet as 0
 
             # Update all forces exerted on the planets through gravity
@@ -169,24 +130,9 @@ def launch(rocket, plt):
             return True
     return False
 
-def main():  # Sets up the positions, velocities, colours, and shapes of the planets on the display
-
-    turtle.setup(800, 800)          # Set the window size to 800 by 800 pixels
-    turtle.bgcolor("white")         # Set up the window with a white background
-
-    """
-    For each planet, the setup follows the same procedure:
-    planet = planet()               Sets up the variables for the planet, goes to the function called planet (line 11)
-    planet.name = 'planet name'     Names the planet
-    planet.mass = number            Gives the planet a mass
-    planet.penup()                  Picks up the turtle so it does not draw a line when you move it
-    planet.color('colour')          Gives the planet a colour (ex. yellow)
-    planet.shape('shape')           Gives the planet a shape (ex. circle)
-    planet.xloc = number            Gives the planet an x component position
-    planet.yloc = number            Gives the planet a y component position
-    planet.vx = number              Gives the planet an x component velocity
-    planet.vy = number              Gives the planet a y component velocity
-    """
+def start_simulation():
+    turtle.setup(800, 800)
+    turtle.bgcolor("black")
 
     sun = planet()
     sun.name = 'Sun'
@@ -278,8 +224,8 @@ def main():  # Sets up the positions, velocities, colours, and shapes of the pla
     mercury.vy = AU * -2.399853089908365E-03 / 86400
     mercury.vx = AU * 2.222816779156590E-02/ 86400
 
-    loop([sun, mars, earth, venus, mercury, earthrocket, marsrocket])       # Goes to the function called loop (line 37). Takes these planets and creates a solar system.
+    loop([sun, mars, earth, venus, mercury, earthrocket, marsrocket])
 
-
-if __name__ == '__main__':          # The code starts here
-    main()                          # Goes to the function called main (line 82)
+start_simulation()
+# if __name__ == '__main__':
+#     main()
