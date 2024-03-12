@@ -8,8 +8,17 @@ AU=149600000000
 SCALE=75.0/AU
 
 class planet(Turtle):
-    vx=vy=0.0
-    xloc=yloc=0.0
+    def __init__(self,params):
+        self.name=params[0]
+        self.mass=params[1]
+        self.diameter=params[2]
+        self.color(params[3])
+        self.shape(params[4])
+        self.shapesize=(params[5][0],params[5][1],params[5][2])
+        self.xloc=params[6]
+        self.yloc=params[7]
+        self.vx=params[8]
+        self.vy=params[9]
     def attraction(self,other,date):
         # x, y and total distance
         rx=other.xloc-self.xloc
@@ -42,7 +51,6 @@ class rocket(Turtle):
             return fx,fy
         else:
             return 0,0
-
     # def thrust():
     #     rocket = rocket()
     #
@@ -121,9 +129,15 @@ def launch(rocket,plt):
             return True
     return False
 
+def scaledown(v):
+    return v*AU
+
 def start_simulation():
     turtle.setup(800,800)
     turtle.bgcolor("white")
+    s=86400
+    cir='circle'
+    ship='classic'
 
     sun=planet()
     sun.name='Sun'
@@ -201,19 +215,11 @@ def start_simulation():
     venus.vy=AU*2.008132769363285E-02/86400
     venus.vx=AU*-1.547265569012768E-03/86400
 
-    mercury=planet()
-    mercury.name='Mercury'
-    mercury.mass=3.302E23
+    mer=['Mercury',3.302E23,2440*2,'gray',cir,[0.3,0.3,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(-2.399853089908365E-03)/s,scaledown(2.222816779156590E-02)/s]
+    mercury=planet(mer)
     mercury.penup()
-    mercury.color('gray')
-    mercury.shape('circle')
-    mercury.shapesize(0.3,0.3,1)
-    mercury.diameter=2440*2
-    mercury.xloc=(1*AU)*-6.333487572394930E-02
-    mercury.yloc=(1*AU)*-4.608453269808703E-01
-    mercury.vy=AU*-2.399853089908365E-03/86400
-    mercury.vx=AU*2.222816779156590E-02/86400
 
-    loop([sun, mars, earth, venus, mercury, earthrocket, marsrocket])
+    astros=[sun,mercury,venus,earth,mars,earthrocket,marsrocket]
+    loop(astros)
 
 start_simulation()
