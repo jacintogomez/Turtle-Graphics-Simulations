@@ -43,16 +43,12 @@ class rocket(Turtle):
         else:
             return 0,0
 
-
     # def thrust():
     #     rocket = rocket()
     #
     #
     #
     # thrust()
-
-
-
 
 # def stop(system):
 #     if rocket.xloc==mars.xloc and rocket.yloc==mars.yloc:
@@ -96,16 +92,14 @@ def loop(system):
             rocket.forward(20)
         for body in system:
             total_fx=total_fy=0.0   # Initialize the x and y components on the planet as 0
-
             # Update all forces exerted on the planets through gravity
             for other in system:
                 if body is other: # makes sure the model isn't computing g force with itself
                     continue
                 fx,fy=body.attraction(other, date)   # Goes to the function called attraction (line 20)
-                total_fx+=fx     # Sums up the x components of the gravitational forces on the planet
-                total_fy+=fy    # Sums up the y components of the gravitational forces on the planet
-
-            force[body]=(total_fx,total_fy)        # Assign the total force exerted on the planet to the dictionary, force
+                total_fx+=fx
+                total_fy+=fy
+            force[body]=(total_fx,total_fy)
 
         # Update velocities
         for body in system:
@@ -118,10 +112,7 @@ def loop(system):
         for body in system:
             body.xloc+=body.vx*timestep
             body.yloc+=body.vy*timestep
-            body.goto(body.xloc*SCALE,body.yloc*SCALE)         # Move everything!
-
-
-
+            body.goto(body.xloc*SCALE,body.yloc*SCALE)
         date+=1
 
 def launch(rocket,plt):
