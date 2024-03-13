@@ -1,6 +1,5 @@
 import turtle
 from turtle import *
-from tkinter import *
 from math import *
 
 G=6.6741e-11
@@ -9,11 +8,13 @@ SCALE=75.0/AU
 
 class planet(Turtle):
     def __init__(self,params):
+        super().__init__()
         self.name=params[0]
         self.mass=params[1]
         self.diameter=params[2]
+        self.color(params[3])
         self.shape(params[4])
-        self.shapesize=(params[5][0],params[5][1],params[5][2])
+        self.shapesize(params[5][0],params[5][1],params[5][2])
         self.xloc=params[6]
         self.yloc=params[7]
         self.vx=params[8]
@@ -64,39 +65,39 @@ class rocket(Turtle):
 def loop(system):
     timestep=1*24*3600 # One day
     date=0
-    earthrocket=system[5]
-    marsrocket=system[6]
-    earth=system[5]
+    # earthrocket=system[5]
+    # marsrocket=system[6]
+    # earth=system[5]
     for body in system:
         body.goto(body.xloc*SCALE,body.yloc*SCALE)
         body.pendown() # start drawing
     while True:
         force={}
-        if date==0:
-            marsrocket.hideturtle()
-            marsrocket.penup()
-        if date==20:
-            earthrocket.hideturtle()
-            earthrocket.penup()
-        if date==40:
-            marsrocket.showturtle()
-            marsrocket.pendown()
-        if date==40:
-            rocket=planet()
-            rocket.name='Intermediate Rocket'
-            rocket.mass=5.97*10**24
-            rocket.penup()
-            rocket.color('black')
-            rocket.shape('classic')
-            rocket.shapesize(0.5,0.5,1)
-            rocket.diameter=12742
-            rocket.yloc=earth.yloc
-            rocket.xloc=earth.xloc
-            rocket.vy=0
-            rocket.vx=0
-            rocket.showturtle()
-            rocket.pendown()
-            rocket.forward(20)
+        # if date==0:
+        #     marsrocket.hideturtle()
+        #     marsrocket.penup()
+        # if date==20:
+        #     earthrocket.hideturtle()
+        #     earthrocket.penup()
+        # if date==40:
+        #     marsrocket.showturtle()
+        #     marsrocket.pendown()
+        # if date==40:
+        #     rocket=planet()
+        #     rocket.name='Intermediate Rocket'
+        #     rocket.mass=5.97*10**24
+        #     rocket.penup()
+        #     rocket.color('black')
+        #     rocket.shape('classic')
+        #     rocket.shapesize(0.5,0.5,1)
+        #     rocket.diameter=12742
+        #     rocket.yloc=earth.yloc
+        #     rocket.xloc=earth.xloc
+        #     rocket.vy=0
+        #     rocket.vx=0
+        #     rocket.showturtle()
+        #     rocket.pendown()
+        #     rocket.forward(20)
         for body in system:
             total_fx=total_fy=0.0   # Initialize the x and y components on the planet as 0
             # Update all forces exerted on the planets through gravity
