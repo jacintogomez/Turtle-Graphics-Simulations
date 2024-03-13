@@ -139,7 +139,7 @@ def start_simulation():
     cir='circle'
     ship='classic'
 
-    su=['Sun',1.98892*10**30,1.3914*10**6,'yellow',cir,[2.0,2.0,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(0)/s,scaledown(0)/s]
+    su=['Sun',1.98892*10**30,1.3914*10**6,'yellow',cir,[2.0,2.0,1],0,0,0,0]
     sun=planet()
     sun.name='Sun'
     sun.mass=
@@ -221,7 +221,7 @@ def start_simulation():
     venus.vy=AU*2.008132769363285E-02/86400
     venus.vx=AU*-1.547265569012768E-03/86400
 
-    mer=['Mercury',3.302E23,2440*2,'gray',cir,[0.3,0.3,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(-2.399853089908365E-03)/s,scaledown(2.222816779156590E-02)/s]
+    mer=['Mercury',3.302E23,2440*2,'gray',cir,[0.3,0.3,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(2.222816779156590E-02)/s,scaledown(-2.399853089908365E-03)/s]
     mercury=planet(mer)
     mercury.penup()
 
