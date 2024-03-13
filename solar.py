@@ -12,7 +12,6 @@ class planet(Turtle):
         self.name=params[0]
         self.mass=params[1]
         self.diameter=params[2]
-        self.color(params[3])
         self.shape(params[4])
         self.shapesize=(params[5][0],params[5][1],params[5][2])
         self.xloc=params[6]
@@ -140,92 +139,55 @@ def start_simulation():
     ship='classic'
 
     su=['Sun',1.98892*10**30,1.3914*10**6,'yellow',cir,[2.0,2.0,1],0,0,0,0]
-    sun=planet()
-    sun.name='Sun'
-    sun.mass=
-    sun.penup()
+    sun=planet(su)
     sun.color('yellow')
-    sun.shape('circle')
-    sun.diameter=
-    sun.shapesize(2.0,2.0,1)
-    """sun.vx = 1000
-    sun.vy = 0"""
+    sun.penup()
 
-    mer=['Earth Rocket',5.97*10**24,12742,'black',ship,[0.5,0.5,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(-2.399853089908365E-03)/s,scaledown(2.222816779156590E-02)/s]
-    earthrocket=planet()
-    earthrocket.name='Earth Rocket'
-    earthrocket.mass=
-    earthrocket.penup()
-    earthrocket.color('black')
-    earthrocket.shape('classic')
-    earthrocket.shapesize(0.5,0.5,1)
-    earthrocket.diameter=
-    earthrocket.yloc=(1*AU)*0.96756
-    earthrocket.xloc=(1*AU)*-0.17522
-    earthrocket.vy=AU*-0.0031302/86400
-    earthrocket.vx=AU*-0.017201/86400
+    # mer=['Earth Rocket',5.97*10**24,12742,'black',ship,[0.5,0.5,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(-2.399853089908365E-03)/s,scaledown(2.222816779156590E-02)/s]
+    # earthrocket=planet()
+    # earthrocket.name='Earth Rocket'
+    # earthrocket.mass=
+    # earthrocket.penup()
+    # earthrocket.color('black')
+    # earthrocket.shape('classic')
+    # earthrocket.shapesize(0.5,0.5,1)
+    # earthrocket.diameter=
+    # earthrocket.yloc=(1*AU)*0.96756
+    # earthrocket.xloc=(1*AU)*-0.17522
+    # earthrocket.vy=AU*-0.0031302/86400
+    # earthrocket.vx=AU*-0.017201/86400
+    #
+    # mer=['Mercury',3.302E23,2440*2,'gray',cir,[0.3,0.3,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(-2.399853089908365E-03)/s,scaledown(2.222816779156590E-02)/s]
+    # marsrocket=planet()
+    # marsrocket.name='Mars Rocket'
+    # marsrocket.mass=6.39E23
+    # marsrocket.penup()
+    # marsrocket.color('black')
+    # marsrocket.shape('classic')
+    # marsrocket.shapesize(0.4,0.4,1)
+    # marsrocket.diameter=3389.92*2
+    # marsrocket.xloc=(1*AU)*-1.320107604952232
+    # marsrocket.yloc=(1*AU)*-8.857574644771996E-01
+    # marsrocket.vy=AU*-1.042277973806052E-2/86400
+    # marsrocket.vx=AU*8.320854741090488E-3/86400
 
-    mer=['Mercury',3.302E23,2440*2,'gray',cir,[0.3,0.3,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(-2.399853089908365E-03)/s,scaledown(2.222816779156590E-02)/s]
-    marsrocket=planet()
-    marsrocket.name='Mars Rocket'
-    marsrocket.mass=6.39E23
-    marsrocket.penup()
-    marsrocket.color('black')
-    marsrocket.shape('classic')
-    marsrocket.shapesize(0.4,0.4,1)
-    marsrocket.diameter=3389.92*2
-    marsrocket.xloc=(1*AU)*-1.320107604952232
-    marsrocket.yloc=(1*AU)*-8.857574644771996E-01
-    marsrocket.vy=AU*-1.042277973806052E-2/86400
-    marsrocket.vx=AU*8.320854741090488E-3/86400
-
-    mer=['Mercury',3.302E23,2440*2,'gray',cir,[0.3,0.3,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(-2.399853089908365E-03)/s,scaledown(2.222816779156590E-02)/s]
-    earth=planet()
-    earth.name='Earth'
-    earth.mass=5.97*10**24
+    ear=['Earth',5.97*10**24,12742,'blue',cir,[0.6,0.6,1],scaledown(-0.17522),scaledown(0.96756),scaledown(-0.017201)/s,scaledown(-0.0031302)/s]
+    earth=planet(ear)
     earth.penup()
-    earth.color('blue')
-    earth.shape('circle')
-    earth.shapesize(0.6,0.6,1)
-    earth.diameter=12742
-    earth.yloc=(1*AU)*0.96756
-    earth.xloc=(1*AU)*-0.17522
-    earth.vy=AU*-0.0031302/86400
-    earth.vx=AU*-0.017201/86400
 
-    mer=['Mercury',3.302E23,2440*2,'gray',cir,[0.3,0.3,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(-2.399853089908365E-03)/s,scaledown(2.222816779156590E-02)/s]
-    mars=planet()
-    mars.name='Mars'
-    mars.mass=6.39E23
+    mar=['Mars',6.39E23,3389.92*2,'red',cir,[0.4,0.4,1],scaledown(-1.320107604952232),scaledown(-8.857574644771996E-01),scaledown(8.320854741090488E-3)/s,scaledown(-1.042277973806052E-2)/s]
+    mars=planet(mar)
     mars.penup()
-    mars.color('red')
-    mars.shape('circle')
-    mars.shapesize(0.4,0.4,1)
-    mars.diameter=3389.92*2
-    mars.xloc=(1*AU)*-1.320107604952232
-    mars.yloc=(1*AU)*-8.857574644771996E-01
-    mars.vy=AU*-1.042277973806052E-2/86400
-    mars.vx=AU*8.320854741090488E-3/86400
 
-    mer=['Mercury',3.302E23,2440*2,'gray',cir,[0.3,0.3,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(-2.399853089908365E-03)/s,scaledown(2.222816779156590E-02)/s]
-    venus=planet()
-    venus.name='Venus'
-    venus.mass=4.867E24
+    ven=['Venus',4.867E24,6051.84*2,'green',cir,[0.5,0.5,1],scaledown(7.232002999670082E-01),scaledown(5.254837930328842E-02),scaledown(-1.547265569012768E-03)/s,scaledown(2.008132769363285E-02)/s]
+    venus=planet(ven)
     venus.penup()
-    venus.color('green')
-    venus.shape('circle')
-    venus.shapesize(0.5,0.5,1)
-    venus.diameter=6051.84*2
-    venus.xloc=(1*AU)*7.232002999670082E-01
-    venus.yloc=(1*AU)*5.254837930328842E-02
-    venus.vy=AU*2.008132769363285E-02/86400
-    venus.vx=AU*-1.547265569012768E-03/86400
 
     mer=['Mercury',3.302E23,2440*2,'gray',cir,[0.3,0.3,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(2.222816779156590E-02)/s,scaledown(-2.399853089908365E-03)/s]
     mercury=planet(mer)
     mercury.penup()
 
-    astros=[sun,mercury,venus,earth,mars,earthrocket,marsrocket]
+    astros=[sun,mercury,venus,earth,mars]
     loop(astros)
 
 start_simulation()
