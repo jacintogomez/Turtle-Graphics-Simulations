@@ -139,30 +139,33 @@ def start_simulation():
     cir='circle'
     ship='classic'
 
+    su=['Sun',1.98892*10**30,1.3914*10**6,'yellow',cir,[2.0,2.0,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(0)/s,scaledown(0)/s]
     sun=planet()
     sun.name='Sun'
-    sun.mass=1.98892*10**30
+    sun.mass=
     sun.penup()
     sun.color('yellow')
     sun.shape('circle')
-    sun.diameter=1.3914*10**6
+    sun.diameter=
     sun.shapesize(2.0,2.0,1)
     """sun.vx = 1000
     sun.vy = 0"""
 
+    mer=['Earth Rocket',5.97*10**24,12742,'black',ship,[0.5,0.5,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(-2.399853089908365E-03)/s,scaledown(2.222816779156590E-02)/s]
     earthrocket=planet()
     earthrocket.name='Earth Rocket'
-    earthrocket.mass=5.97 * 10**24
+    earthrocket.mass=
     earthrocket.penup()
     earthrocket.color('black')
     earthrocket.shape('classic')
     earthrocket.shapesize(0.5,0.5,1)
-    earthrocket.diameter=12742
+    earthrocket.diameter=
     earthrocket.yloc=(1*AU)*0.96756
     earthrocket.xloc=(1*AU)*-0.17522
     earthrocket.vy=AU*-0.0031302/86400
     earthrocket.vx=AU*-0.017201/86400
 
+    mer=['Mercury',3.302E23,2440*2,'gray',cir,[0.3,0.3,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(-2.399853089908365E-03)/s,scaledown(2.222816779156590E-02)/s]
     marsrocket=planet()
     marsrocket.name='Mars Rocket'
     marsrocket.mass=6.39E23
@@ -176,6 +179,7 @@ def start_simulation():
     marsrocket.vy=AU*-1.042277973806052E-2/86400
     marsrocket.vx=AU*8.320854741090488E-3/86400
 
+    mer=['Mercury',3.302E23,2440*2,'gray',cir,[0.3,0.3,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(-2.399853089908365E-03)/s,scaledown(2.222816779156590E-02)/s]
     earth=planet()
     earth.name='Earth'
     earth.mass=5.97*10**24
@@ -189,6 +193,7 @@ def start_simulation():
     earth.vy=AU*-0.0031302/86400
     earth.vx=AU*-0.017201/86400
 
+    mer=['Mercury',3.302E23,2440*2,'gray',cir,[0.3,0.3,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(-2.399853089908365E-03)/s,scaledown(2.222816779156590E-02)/s]
     mars=planet()
     mars.name='Mars'
     mars.mass=6.39E23
@@ -202,6 +207,7 @@ def start_simulation():
     mars.vy=AU*-1.042277973806052E-2/86400
     mars.vx=AU*8.320854741090488E-3/86400
 
+    mer=['Mercury',3.302E23,2440*2,'gray',cir,[0.3,0.3,1],scaledown(-6.333487572394930E-02),scaledown(-4.608453269808703E-01),scaledown(-2.399853089908365E-03)/s,scaledown(2.222816779156590E-02)/s]
     venus=planet()
     venus.name='Venus'
     venus.mass=4.867E24
