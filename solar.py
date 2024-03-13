@@ -138,7 +138,7 @@ def start_simulation():
 
     earthrocket=planet()
     earthrocket.name='Earth Rocket'
-    earthrocket.mass=5.97 * 10**24
+    earthrocket.mass=5.97*10**24
     earthrocket.penup()
     earthrocket.color('black')
     earthrocket.shape('classic')
