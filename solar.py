@@ -134,7 +134,7 @@ def scaledown(v):
 
 def start_simulation():
     turtle.setup(800,800)
-    turtle.bgcolor("white")
+    turtle.bgcolor("black")
     s=86400
     cir='circle'
     ship='classic'
@@ -188,7 +188,11 @@ def start_simulation():
     mercury=planet(mer)
     mercury.penup()
 
-    astros=[sun,mercury,venus,earth,mars]
+    jup=['Jupiter',1898.0E24,10*10**24,'orange',cir,[0.8,0.8,0.1],scaledown(-1.320107604952232),scaledown(-8.857574644771996E-01),scaledown(8.320854741090488E-3)/s,scaledown(-1.042277973806052E-2)/s]
+    jupiter=planet(jup)
+    jupiter.penup()
+
+    astros=[sun,mercury,venus,earth,mars,jupiter]
     loop(astros)
 
 start_simulation()
