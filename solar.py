@@ -188,7 +188,7 @@ def start_simulation():
     mercury=planet(mer)
     mercury.penup()
 
-    jup=['Jupiter',1898.0E24,10*10**24,'orange',cir,[0.8,0.8,0.1],scaledown(-1.320107604952232),scaledown(-8.857574644771996E-01),scaledown(8.320854741090488E-3)/s,scaledown(-1.042277973806052E-2)/s]
+    jup=['Jupiter',1898.0E24,10*10**24,'orange',cir,[0.8,0.8,0.1],scaledown(1.3*-1.320107604952232),scaledown(1.3*-8.857574644771996E-01),scaledown(1*8.320854741090488E-3)/s,scaledown(1*-1.042277973806052E-2)/s]
     jupiter=planet(jup)
     jupiter.penup()
 
